@@ -1,4 +1,4 @@
-# ClickerQuiz
+# Quiz330Part3
 
 Comp 330 project 
 
