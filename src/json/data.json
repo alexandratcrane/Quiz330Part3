@@ -1,62 +1,69 @@
 {
-    "filled": [
-        {
-            "question": "What do we use for version control in this class?",
-            "input": "",
-            "answer": "git",
-            "correct": null
-        },
-        {
-            "question": "What planet are we on?",
-            "input": "",
-            "answer": "earth",
-            "correct": null
-        },
-        {
-            "question": "What color is the sky?",
-            "input": "",
-            "answer": "blue",
-            "correct": null
-        },
-        {
-            "question": "How many bits in a byte?",
-            "input": "",
-            "answer": "eight",
-            "correct": null
-        }
-    ],
-    "multChoice1": {
-        "question": "Who is our TA?",
-        "button": {
-            "0": "0.) Asbel",
-            "1": "1.) Jennifer",
-            "2": "2.) Anne",
-            "3": "3.) Alex"
-        },
-        "input": "",
-        "answer": 0,
-        "correct": null
+  "questions": [
+    {
+      "questionCount": 1,
+      "info": "What do we use for version control in this class?",
+      "answer": "git",
+      "input": "",
+      "correct": null
     },
-    "multChoice2": {
-        "question": "what is the IP address for localhost?",
-        "button": {
-            "0": "0.) 60",
-            "1": "1.) 1.127.0.0.1",
-            "2": "2.) 21",
-            "3": "3.) 100"
-        },
-        "input": "",
-        "answer": 1,
-        "correct": null
+    {
+      "questionCount": 2,
+      "info": "What planet are we on?2",
+      "answer": "earth",
+      "input": "",
+      "correct": null
     },
-    "TF": {
-        "question": "The capital of Illinois is Chicago",
-        "options": {
-            "0": true,
-            "1": false
-        },
-        "answer": false,
-        "correct": null,
-        "input": ""
+    {
+      "questionCount": 3,
+      "info": "What color is the sky",
+      "answer": "blue",
+      "input": "",
+      "correct": null
+    },
+    {
+      "questionCount": 4,
+      "info": "How many bits in a byte?",
+      "answer": "8",
+      "input": "",
+      "correct": null
+    },
+    {
+      "questionCount": 4,
+      "info": "Who is our TA?",
+      "options": [
+        "Asbel",
+        "Jennifer",
+        "Anne",
+        "Alex"
+      ],
+      "input": "",
+      "answer": 0,
+      "correct": null
+    },
+    {
+      "questionCount": 5,
+      "info": "what is the IP address for localhost?",
+      "options": [
+        "60",
+        "1.127.0.0.1",
+        "1",
+        "100"
+      ],
+      "input": "",
+      "answer": "1.127.0.0.1",
+      "correct": null
+    },
+    {
+      "questionCount": 6,
+      "info": "The capital of Illinois is Chicago",
+      "options": [
+        "true",
+        "false"
+      ],
+      "answer": "true",
+      "correct": null,
+      "input": ""
     }
+  ]
 }
