@@ -131,18 +131,13 @@
 
 <script>
 import Json from '../json/data.json'
-
 export default {
     data() {
         return{
            fill: Json.filled,
-
            one: Json.multChoice1,
-
            two: Json.multChoice2,
            trueFalse: Json.TF,
-
-
            displayAnswer: false,
            
            
@@ -161,9 +156,7 @@ export default {
             return input;
             }
         },
-
     checkAgainstAnswerFill(questionNumber, answer){
-
         const input = this.processInput(JSON.stringify(this.fill[questionNumber].input))
         
         if (input == answer){
@@ -172,71 +165,49 @@ export default {
             this.fill[questionNumber].correct = false
         }
     },
-
    
     validateJSON(){
-
-
     try { 
         
     this.checkAgainstAnswerFill(0, this.processInput(JSON.stringify(this.fill[0].answer)))
     this.checkAgainstAnswerFill(1, this.processInput(JSON.stringify(this.fill[1].answer)))
     this.checkAgainstAnswerFill(2, this.processInput(JSON.stringify(this.fill[2].answer)))
     this.checkAgainstAnswerFill(3, this.processInput(JSON.stringify(this.fill[3].answer)))
-
-
 if (this.one.input == this.one.answer){
     this.one.correct = true
 }else{
     this.one.correct = false
 }
-
-
 if (this.two.input == this.two.answer){
     this.two.correct = true
 }else{
     this.two.correct = false
 }
-
 if (this.trueFalse.input == 1){
     this.trueFalse.correct = true
 }else{
     this.trueFalse.correct = false
 }
-
   this.displayAnswer =  true
-
-
     }catch(e) { alert(e); }
-
-
-
     
 }
-
     }
-
 }
     
-
-
 </script>
 
 <style scoped>
 .v-card__text, .v-card__title {
   word-break: normal; 
   color:black;
-
 }
-
 .v-btn {
     margin-bottom:5%;
     left: 50%;
     transform: translateX(-50%);
     margin-top: 20px;
 }
-
-
 .v-card{
     margin-left: 50%;
     margin-right: 50%;
@@ -246,5 +217,4 @@ if (this.trueFalse.input == 1){
     
 }
     
-
 </style>
