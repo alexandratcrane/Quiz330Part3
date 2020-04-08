@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <!--
+
     <v-app-bar
       app
       color="primary"
@@ -9,7 +9,7 @@
       <h1 class="mx-auto"> Clicker Quiz</h1>
       
     </v-app-bar>
-    -->
+
 
     <v-content>
       <Question/>

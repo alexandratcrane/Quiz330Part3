@@ -35,7 +35,8 @@
                         </v-card-subtitle>
                     </div>
                 </v-card>
-              <!--
+
+              
                 <v-card
                     raised
                     class="mx-auto">
@@ -61,6 +62,10 @@
                 </v-card> 
 
 
+                       
+          
+       
+        
                 <v-card
                     raised
                     class="mx-auto">
@@ -127,7 +132,7 @@
         v-on:click="validateJSON()">
         Submit
         </v-btn>
--->
+
 </div>
 </template>
 
@@ -138,14 +143,10 @@ export default {
     data() {
         return{
            fill: Json.questions[0].filled,
-           
-           /*fill: Json.filled,
-           one: Json.multChoice1,
-           two: Json.multChoice2,
-           trueFalse: Json.TF,
+           one: Json.questions[1].multChoice1,
+           two: Json.questions[2].multChoice2,
+           trueFalse: Json.questions[3].TF,
            displayAnswer: false,
-           */
-           
         }
     },
     methods: {
