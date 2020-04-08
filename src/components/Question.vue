@@ -1,5 +1,8 @@
 <template>
     <div>
+       
+       
+
         <v-form
             ref="form">
      
@@ -32,7 +35,7 @@
                         </v-card-subtitle>
                     </div>
                 </v-card>
-              
+              <!--
                 <v-card
                     raised
                     class="mx-auto">
@@ -124,7 +127,7 @@
         v-on:click="validateJSON()">
         Submit
         </v-btn>
-  
+-->
 </div>
 </template>
 
@@ -134,12 +137,14 @@ import Json from '../json/data.json'
 export default {
     data() {
         return{
-           fill: Json.filled,
+           fill: Json.questions[0].filled,
+           
+           /*fill: Json.filled,
            one: Json.multChoice1,
            two: Json.multChoice2,
            trueFalse: Json.TF,
            displayAnswer: false,
-           
+           */
            
         }
     },
