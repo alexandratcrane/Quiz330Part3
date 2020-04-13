@@ -50,7 +50,20 @@
             <v-col>
                 <v-card class = "v-card">
            TODO: render on submit for UI questions for quiz based on result
+
+           
                 </v-card>
+
+
+               <router-link class="routerLink" to="/view-quiz">
+      <v-btn x-large color="blue"
+      class="ma-2 white--text">
+          Create a new Quiz
+      </v-btn>
+      </router-link>
+       
+
+
             </v-col>
         </v-form>
 
@@ -105,5 +118,10 @@ export default {
 
 .v-select{
   margin-top: 25px;
+}
+.routerLink{
+     text-decoration: none;
+     margin: 25px;
+     
 }
 </style>
