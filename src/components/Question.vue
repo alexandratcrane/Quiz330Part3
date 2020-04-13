@@ -1,4 +1,5 @@
 <template>
+<v-app>
     <div>
        
        
@@ -125,7 +126,9 @@
         </v-form>   
        
     <v-btn
-        outlined color="success"
+        x-large
+        dark
+        color="success"
         type="submit"
         class="mx auto"
         extra large
@@ -134,6 +137,7 @@
         </v-btn>
 
 </div>
+</v-app>
 </template>
 
 
@@ -210,13 +214,14 @@ if (this.trueFalse.input == 1){
 }
 .v-btn {
     margin-bottom:5%;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+
+    margin-top: 50px;
 }
 .v-card{
-    margin-left: 50%;
-    margin-right: 50%;
+   margin-left: auto;
+    margin-right: auto;
     width: 450px;
     padding: 10px 20px;
     margin-top: 20px;

@@ -1,42 +1,48 @@
 <template>
-  <v-app>
-
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <h1 class="mx-auto"> Clicker Quiz</h1>
+  <div id="app">
       
-    </v-app-bar>
+     
 
 
-    <v-content>
-      <Question/>
-    </v-content>
-  </v-app>
+    <home/>
+   
+    <router-view/>
+  </div>
 </template>
 
-<script>
-import Question from './components/Question';
+<style lang="scss">
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
 
-export default {
-  name: 'App',
+#nav {
+  padding: 30px;
 
-  components: {
-    Question,
-  },
+  a {
+    font-weight: bold;
+    color: #2c3e50;
 
-  data: () => ({
-    //
-  }),
-};
-</script>
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
+}
 
-<style scoped>
+img {
+width: 300px;
+height: auto;
+display: block;
+margin-left: auto;
+margin-right: auto;
+margin-bottom: 75px;
+}
 
-.h1{
-  margin-left: 50%;
-  margin-right: 50%;
+h1{
+  margin: 75px;
+  
 }
 </style>
