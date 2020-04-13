@@ -1,0 +1,134 @@
+{
+    "questions": [
+        {
+            "questionNumber": "1",
+            "info": "Who was the legendary Benedictine monk who invented champagne?",
+            "Answer": "Dom Perignon"
+        },
+        {
+            "questionNumber": "2",
+            "info": "Name the largest freshwater lake in the world.",
+            "Answer": "Lake Superior"
+        },
+        {
+            "questionNumber": "3",
+            "info": "Where would you find the Sea of Tranquility?",
+            "Answer": "The Moon"
+        },
+        {
+            "questionNumber": "4",
+            "info": "What is someone who shoes horses called?",
+            "Answer": "A farrier"
+        },
+        {
+            "questionNumber": "5",
+            "info": "What item of clothing was named after its Scottish inventor?",
+            "Answer": "A Mackintosh"
+        },
+        {
+            "questionNumber": "6",
+            "info": "What kind of weapon is a falchion?",
+            "Answer": "A sword"
+        },
+        {
+            "questionNumber": "7",
+            "info": "Which word goes before vest, beans and quartet?",
+            "Answer": "String"
+        },
+        {
+            "questionNumber": "8",
+            "info": "What is another word for lexicon?",
+            "Answer": "Dictionary"
+        },
+        {
+            "questionNumber": "9",
+            "info": "Name the seventh planet from the sun.",
+            "Answer": "Uranus"
+        },
+        {
+            "questionNumber": "10",
+            "info": "Who invented the rabies vaccination?",
+            "Answer": "Louis Pasteur"
+        },
+        {
+            "questionNumber": "11",
+            "info": "True or false, Bill gates invented Apple",
+            "Answer": "False"
+        },
+        {
+            "questionNumber": "12",
+            "info": "True or false, Steve Jobs invented Apple",
+            "Answer": "True"
+        },
+        {
+            "questionNumber": "13",
+            "info": "Barrack Obama was the 3rd president",
+            "Answer": "False"
+        },
+        {
+            "questionNumber": "14",
+            "info": "Will Arnett plays Gob in Arrested Development",
+            "Answer": "True"
+        },
+        {
+            "questionNumber": "15",
+            "info": "Linus Torvalds is the maintainer of Linux",
+            "Answer": "True"
+        },
+        {
+            "questionNumber": "16",
+            "info": "What year did the Paris Commune rise up?",
+            "options": [
+                "1870",
+                "1871",
+                "1872",
+                "1873"
+            ],
+            "Answer": "1871"
+        },
+        {
+            "questionNumber": "17",
+            "info": "What year did the Soviet Union fall?",
+            "options": [
+                "1989",
+                "1990",
+                "1991",
+                "1992"
+            ],
+            "Answer": "1991"
+        },
+        {
+            "questionNumber": "18",
+            "info": "What year did Civ 5 release?",
+            "options": [
+                "2007",
+                "2008",
+                "2009",
+                "2010"
+            ],
+            "Answer": "2010"
+        },
+        {
+            "questionNumber": "19",
+            "info": "Which band is the best?",
+            "options": [
+                "Grateful Dead",
+                "Wham!",
+                "Marky Mark and the Funky Bunch",
+                "Miami Sound Machine"
+            ],
+            "Answer": "Grateful Dead"
+        },
+        {
+            "questionNumber": "20",
+            "info": "Which Programming Language exists",
+            "options": [
+                "LISP",
+                "Burnout Paradise!",
+                "Gamethyon",
+                "Teascript "
+            ],
+            "Answer": "LISP"
+        }
+    ]
+}

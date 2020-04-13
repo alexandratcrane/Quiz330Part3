@@ -30,7 +30,7 @@ def main(quiz_type):
                     print("Answer not in options, ERROR")
                 question_dict = {
 
-                    "question": counter + 1,
+                    "questionNumber": counter + 1,
                     "info": info,
                     "options": options,
                     "Answer": answer
@@ -54,7 +54,7 @@ def main(quiz_type):
             if quiz_type == 'Multiple Choice':
                 question_dict = {
 
-                    "question": counter + 1,
+                    "questionNumber": counter + 1,
                     "info": info,
                     "options": options,
                     "Answer": answer

@@ -1,5 +1,9 @@
 <template>
+<v-app>
     <div>
+       
+       
+
         <v-form
             ref="form">
      
@@ -32,6 +36,7 @@
                         </v-card-subtitle>
                     </div>
                 </v-card>
+
               
                 <v-card
                     raised
@@ -58,6 +63,10 @@
                 </v-card> 
 
 
+                       
+          
+       
+        
                 <v-card
                     raised
                     class="mx-auto">
@@ -117,15 +126,18 @@
         </v-form>   
        
     <v-btn
-        outlined color="success"
+        x-large
+        dark
+        color="success"
         type="submit"
         class="mx auto"
         extra large
         v-on:click="validateJSON()">
         Submit
         </v-btn>
-  
+
 </div>
+</v-app>
 </template>
 
 
@@ -134,13 +146,11 @@ import Json from '../json/data.json'
 export default {
     data() {
         return{
-           fill: Json.filled,
-           one: Json.multChoice1,
-           two: Json.multChoice2,
-           trueFalse: Json.TF,
+           fill: Json.questions[0].filled,
+           one: Json.questions[1].multChoice1,
+           two: Json.questions[2].multChoice2,
+           trueFalse: Json.questions[3].TF,
            displayAnswer: false,
-           
-           
         }
     },
     methods: {
@@ -204,13 +214,14 @@ if (this.trueFalse.input == 1){
 }
 .v-btn {
     margin-bottom:5%;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+
+    margin-top: 50px;
 }
 .v-card{
-    margin-left: 50%;
-    margin-right: 50%;
+   margin-left: auto;
+    margin-right: auto;
     width: 450px;
     padding: 10px 20px;
     margin-top: 20px;

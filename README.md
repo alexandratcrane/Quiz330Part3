@@ -5,7 +5,7 @@ Comp 330 project
 This is an in-class project where we create a quiz in order to, ultimately, help teachers and students. The questions are straightforward and are meant to be silly. In the near future, we will be creating a client/server system where instructors will be able to run a server that the students will take the quiz on. Stay tuned!
 
 
-![demo image](./clicker-quiz/src/assets/demo.png)
+
 
 ## Installation instructions
 
