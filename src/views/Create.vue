@@ -48,7 +48,8 @@
         <v-form
             ref="form">
             <v-col>
-                <v-card class = "v-card">
+                <v-card class = "v-card"
+                  v-if="displayQUestions == true">
            TODO: render on submit for UI questions for quiz based on result
 
            
@@ -77,6 +78,7 @@ import Nav from '@/components/Nav.vue'
 export default {
   
    name: 'Create',
+  
    
   components: {
     Nav,
@@ -88,6 +90,7 @@ export default {
       multChoiceNum: null,
       inputNum: null,
       tfNum : null,
+      displayQuestions: false,
 
     }
   },
@@ -96,6 +99,7 @@ export default {
       alert(this.multChoiceNum)
       alert(this.inputNum)
       alert(this.tfNum)
+      this.displayQuestions = true
     }
   }
 

@@ -1,5 +1,3 @@
-{"questions" : [
-
 {
      "filled" : [
         {
@@ -32,10 +30,9 @@
             "answer": "eight",
             "correct": null     
      }
-        ]
-},
-{
-     "multChoice1": 
+        ],
+    "multChoice" : [
+            
             {   
                 "questionNumber":"5",
                 "question": "Who is our TA?",
@@ -48,10 +45,10 @@
                 "input": "",
                 "answer": 0,
                 "correct": null
-            }
- },
-{
-    "multChoice2": 
+            },
+     
+
+   
         {
             "questionNumber": "6",
             "question": "what is the IP address for localhost?",
@@ -65,9 +62,9 @@
             "answer": 1,
             "correct": null
         }
-},
-{
-    "TF" : 
+    ],
+
+    "TF" : [
             {
             "questionNumber": "7",
             "question":"The capital of Illinois is Chicago",
@@ -79,6 +76,5 @@
             "correct": null,
             "input":""
         }
-    }
-]
+    ]
      }

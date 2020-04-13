@@ -1,6 +1,6 @@
 <template>
   <div class="default">
-   <Nav/>
+<Nav/>
     <Question class="question"/>
   </div>
 </template>
@@ -14,7 +14,7 @@ export default {
   name: 'Default',
   components: {
     Question,
-    Nav
+  Nav
   }
 }
 </script>
@@ -22,5 +22,5 @@ export default {
 <style scoped>
 .question{ 
   margin-top: -50%;
-  }
+  } 
 </style>

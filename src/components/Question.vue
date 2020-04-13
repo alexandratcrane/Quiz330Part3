@@ -1,19 +1,15 @@
 <template>
 <v-app>
     <div>
-       
-       
 
         <v-form
             ref="form">
-     
             <v-col>
               <v-card
                      v-for="q in fill"
                     :key="q.question"
                     raised
                     class="mx-auto">
-
                     <div>
 
                         <v-card-title
@@ -21,13 +17,9 @@
                             v-text="q.question">
                         </v-card-title>
 
-                        
+                        <v-text-field  outlined v-model="q.input" placeholder="Your answer" class="mx-auto" ></v-text-field>
 
-                        <v-text-field  outlined v-model="q.input" placeholder="Your answer" class="mx-auto"
-                        
-                        ></v-text-field>
-
-                        <p style="text-align: center" id="correct" >Your answer: {{ q.input }}</p>     
+                    <!--    <p style="text-align: center" id="correct" >Your answer: {{ q.input }}</p>     -->
                     <v-card-subtitle
                         v-if="displayAnswer == true"
                         v-text="'correct answer: ' + q.answer"
@@ -37,90 +29,64 @@
                     </div>
                 </v-card>
 
-              
-                <v-card
+
+                  <v-card
+                     v-for="q in multChoice"
+                    :key="q.question"
                     raised
                     class="mx-auto">
+                    <div>
 
+                    <v-radio-group  v-model="q.input">
 
-                   
+                        <v-card-title>{{q.question}}</v-card-title>
 
-                    <v-radio-group  v-model="one.input">
-
-                        <v-card-title>{{one.question}}</v-card-title>
-
+                     
                         <v-radio 
-                            v-for="n in one.button"
+                         
+                            v-for="n in q.button"
                             :key="n" 
                             :label="`${n}`" >
+                        
                         </v-radio>
+                  
                     </v-radio-group>
                      <v-card-subtitle
                     v-if="displayAnswer == true"
-                    v-text="'correct input number:  ' + one.answer"
-                    v-bind:style=" one.correct ? 'background-color: #79d279' : 'background-color: #e60000' ">
+                    v-text="'correct input number:  ' + q.answer"
+                    v-bind:style=" q.correct ? 'background-color: #79d279' : 'background-color: #e60000' ">
                     </v-card-subtitle>
+
+                    </div>
                 </v-card> 
 
 
-                       
-          
-       
-        
-                <v-card
+
+
+                    <v-card
+                     v-for="q in trueFalse"
+                    :key="q.question"
                     raised
                     class="mx-auto">
+                    <div>
 
-
-                   
-
-                    <v-radio-group  v-model="two.input">
-
-                        <v-card-title>{{two.question}}</v-card-title>
-
-                        <v-radio 
-                            v-for="n in two.button"
-                            :key="n" 
-                            :label="`${n}`" >
-                        </v-radio>
-                    </v-radio-group>
-
-                     <v-card-subtitle
-                    v-if="displayAnswer == true"
-                    v-text="'correct input number:  ' + two.answer"
-                    v-bind:style=" one.correct ? 'background-color: #79d279' : 'background-color: #e60000' ">
-                    </v-card-subtitle>
-                </v-card> 
-
-
-                <v-card
-                    raised
-                    class="mx-auto">
-
-                    
-
-                    
-                    <v-radio-group v-model="trueFalse.input">
-                        <v-card-title>{{trueFalse.question}} </v-card-title>
+                           <v-radio-group v-model="q.input">
+                        <v-card-title>{{q.question}} </v-card-title>
                         <v-radio 
                             class="ml-7"
-                            v-for="n in trueFalse.options"
+                            v-for="n in q.options"
                             :key="n" 
                             :label="`${n}`">
                         </v-radio>
-
-                    </v-radio-group>
-
-                     <v-card-subtitle
+                         </v-radio-group>
+                          <v-card-subtitle
                     v-if="displayAnswer == true"
-                    v-text="'correct answer: ' + trueFalse.answer"
-                    v-bind:style=" trueFalse.correct ? 'background-color: #79d279' : 'background-color: #e60000' ">
+                    v-text="'correct answer: ' + q.answer"
+                    v-bind:style=" q.correct ? 'background-color: #79d279' : 'background-color: #e60000' ">
                     </v-card-subtitle>
-                </v-card> 
-                      
+                    </div>
 
-                   
-                 
+                    </v-card>                 
             </v-col>
              
         </v-form>   
@@ -134,10 +100,11 @@
         extra large
         v-on:click="validateJSON()">
         Submit
-        </v-btn>
+        </v-btn> 
 
-</div>
-</v-app>
+    </div>
+     </v-app>
+
 </template>
 
 
@@ -146,11 +113,9 @@ import Json from '../json/data.json'
 export default {
     data() {
         return{
-           fill: Json.questions[0].filled,
-           one: Json.questions[1].multChoice1,
-           two: Json.questions[2].multChoice2,
-           trueFalse: Json.questions[3].TF,
-           displayAnswer: false,
+            fill: Json.filled,
+            multChoice: Json.multChoice,
+            trueFalse:Json.TF,
         }
     },
     methods: {
