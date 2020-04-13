@@ -77,7 +77,7 @@
                   raised
                   class="mx-auto">
                   <v-text-field  outlined v-model="inputInput[n]" placeholder="What is your Input question?" class="mx-auto" ></v-text-field>
-
+                  <v-text-field  outlined v-model="inputAnswer[n]" placeholder="What is the answer?" class="mx-auto" ></v-text-field>
                  </v-card>
                
                
@@ -140,9 +140,11 @@ export default {
       tfNum : null,
       displayQuestions: false,
 
-      inputMultChoice: [],
+      inputMultChoice: [{}],
       inputInput: [],
-      inputTF: []
+      inputAnswer: [],
+      inputTF: [],
+
 
 
     }
