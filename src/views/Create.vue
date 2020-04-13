@@ -44,19 +44,66 @@
           
       
         </v-form>
-
+        <div
+         v-if="displayQuestions == true">
         <v-form
             ref="form">
             <v-col>
-                <v-card class = "v-card"
-                  v-if="displayQUestions == true">
-           TODO: render on submit for UI questions for quiz based on result
+                
+                   
+                <div>
+               <span v-for="n in multChoiceNum"
+               :key="n">
+               
+                 <v-card
+                  raised
+                  class="mx-auto">
+                  <v-text-field  outlined v-model="inputMultChoice[n]" placeholder="What is your Multiple Choice question?" class="mx-auto" ></v-text-field>
 
-           
-                </v-card>
+                 </v-card>
+               
+               
+               
+                </span>
+                  </div>
 
+
+                   <div>
+               <span v-for="n in inputNum"
+               :key="n">
+               
+               
+                 <v-card
+                  raised
+                  class="mx-auto">
+                  <v-text-field  outlined v-model="inputInput[n]" placeholder="What is your Input question?" class="mx-auto" ></v-text-field>
+
+                 </v-card>
+               
+               
+                </span>
+                  </div>
+
+
+
+   <div>
+               <span v-for="n in tfNum"
+               :key="n">
+               
+                 <v-card
+                  raised
+                  class="mx-auto">
+                  <v-text-field  outlined v-model="inputTF[n]" placeholder="What is your True/False question?" class="mx-auto" ></v-text-field>
+
+                 </v-card>
+               
+               
+                </span>
+                  </div>
 
                <router-link class="routerLink" to="/view-quiz">
+
+
       <v-btn x-large color="blue"
       class="ma-2 white--text">
           Create a new Quiz
@@ -69,6 +116,7 @@
         </v-form>
 
    </div>
+  </div>
   </div>
 </template>
 
@@ -92,14 +140,19 @@ export default {
       tfNum : null,
       displayQuestions: false,
 
+      inputMultChoice: [],
+      inputInput: [],
+      inputTF: []
+
+
     }
   },
   methods: {
     render(){
-      alert(this.multChoiceNum)
-      alert(this.inputNum)
-      alert(this.tfNum)
       this.displayQuestions = true
+      this.inputTF.length = this.tfNum 
+      this.inputMultChoice.length = this.multChoiceNum
+      this.inputInput.length = this.inputNum
     }
   }
 
