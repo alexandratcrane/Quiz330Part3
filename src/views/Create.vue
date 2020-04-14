@@ -35,7 +35,7 @@
         ></v-select>
 
          
-             <v-btn
+             <v-btn color="#cf2d2d" class="ma-2 white--text"
              v-on:click="render()">
                Submit
         </v-btn>

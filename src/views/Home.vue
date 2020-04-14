@@ -7,14 +7,14 @@
 
     
       <router-link class="routerLink" to="/create-quiz">
-      <v-btn x-large color="blue"
+      <v-btn x-large color="#cf2d2d"
       class="ma-2 white--text">
           Create a new Quiz
       </v-btn>
       </router-link>
  
       <router-link class="routerLink" to="/default-quiz">
-       <v-btn x-large color="blue" 
+       <v-btn x-large color="#cf2d2d" 
        class="ma-2 white--text">
 
        
@@ -44,6 +44,7 @@ export default {
 }
 v-btn{
      text-decoration: none;
+    
 }
 img{
     margin-bottom: 125px;
