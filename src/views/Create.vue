@@ -50,21 +50,24 @@
             ref="form">
             <v-col>
                 
-                   
+                
                 <div>
-               <span v-for="n in multChoiceNum"
-               :key="n">
-               
+                  
                  <v-card
                   raised
+                  v-for="item in multChoiceInputs" :key="item.question"
                   class="mx-auto">
-                  <v-text-field  outlined v-model="inputMultChoice[n]" placeholder="What is your Multiple Choice question?" class="mx-auto" ></v-text-field>
+    <v-text-field  outlined v-model="item.question" placeholder="What is your Multiple Choice question?" class="mx-auto" ></v-text-field>
+                   <v-text-field  outlined v-model="item.trueAnswer" placeholder="What is the true answer?" class="mx-auto" ></v-text-field>
+                    <v-text-field  outlined v-model="item.false1" placeholder="What is the a false answer?" class="mx-auto" ></v-text-field>
+                     <v-text-field  outlined v-model="item.false2" placeholder="What is the a false answer?" class="mx-auto" ></v-text-field>
+                      <v-text-field  outlined v-model="item.false3" placeholder="What is a false answer?" class="mx-auto" ></v-text-field>
 
                  </v-card>
                
                
-               
-                </span>
+             
+            
                   </div>
 
 
@@ -134,16 +137,34 @@ export default {
   },
   data(){
     return {
-      items: [0,1, 2, 3, 4, 5],
+      items: [0,1, 2, 3, 4],
       multChoiceNum: null,
       inputNum: null,
       tfNum : null,
       displayQuestions: false,
 
-      inputMultChoice: [{}],
+
+
+      MCSingle: [
+        {'question': ''},
+        {'trueAnswer': '' },
+        {'false1': ''},
+        {'false2': ''},
+        {'false3': ''}
+        ],
+
+     multChoiceInputs: [],
+      
+
+      //create object that will be used inside of inputmultchoice
+    
       inputInput: [],
       inputAnswer: [],
+
+
       inputTF: [],
+
+
 
 
 
@@ -152,9 +173,21 @@ export default {
   methods: {
     render(){
       this.displayQuestions = true
-      this.inputTF.length = this.tfNum 
-      this.inputMultChoice.length = this.multChoiceNum
-      this.inputInput.length = this.inputNum
+      this.inputTF.length =  this.items[this.multChoiceNum]
+      this.multChoiceInputs.length = this.items[this.multChoiceNum]
+      
+      this.inputInput.length = this.items[this.inputNum]
+     
+      for (let i= 0; i< this.multChoiceNum; i++){
+        this.multChoiceInputs[i] = this.MCSingle
+      }
+
+    },
+    appendAnswers(){
+    //for x in input,
+   // add  {x , inputanswer[x]}
+
+
     }
   }
 
