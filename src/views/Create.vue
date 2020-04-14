@@ -54,16 +54,17 @@
                 
                 
                 <div>
-                  
+                  <!-- TODO: changing key only allows for one keystroke at at a time-->
                  <v-card
                   raised
                   v-for="item in multChoiceInputs" :key="item.question"
                   class="mx-auto">
-    <v-text-field  outlined v-model="item.question" placeholder="What is your Multiple Choice question?" class="mx-auto" ></v-text-field>
-                   <v-text-field  outlined v-model="item.trueAnswer" placeholder="What is the true answer?" class="mx-auto" ></v-text-field>
-                    <v-text-field  outlined v-model="item.false1" placeholder="What is the a false answer?" class="mx-auto" ></v-text-field>
-                     <v-text-field  outlined v-model="item.false2" placeholder="What is the a false answer?" class="mx-auto" ></v-text-field>
-                      <v-text-field  outlined v-model="item.false3" placeholder="What is a false answer?" class="mx-auto" ></v-text-field>
+                  
+    <v-text-field  outlined v-model="item.question" placeholder="What is your Multiple Choice question?" ></v-text-field>
+                   <v-text-field  outlined v-model="item.trueAnswer"  :value="item.trueAnswer" placeholder="What is the true answer?" class="mx-auto" ></v-text-field>
+                    <v-text-field  outlined v-model="item.false1" :value="item.false1" placeholder="What is the a false answer?" class="mx-auto" ></v-text-field>
+                     <v-text-field  outlined v-model="item.false2" :value="item.false2" placeholder="What is the a false answer?" class="mx-auto" ></v-text-field>
+                      <v-text-field  outlined v-model="item.false3" :value="item.false3" placeholder="What is a false answer?" class="mx-auto" ></v-text-field>
 
                  </v-card>
                
@@ -78,7 +79,8 @@
                   raised
                   v-for="item in inputInput" :key="item.question"
                   class="mx-auto">
-             
+                  <!--TODO: fix formatting error for input question 
+                  Duplicate keys detected-->
                   <v-text-field  outlined v-model="item.question" placeholder="What is your Input question?" class="mx-auto" ></v-text-field>
                   <v-text-field  outlined v-model="item.answer" placeholder="What is the answer?" class="mx-auto" ></v-text-field>
                  </v-card>
@@ -96,6 +98,8 @@
                   raised
                   v-for="item in inputTF" :key="item.question"
                   class="mx-auto">
+                  <!-- TODO: fix formatting error for TF questions
+                  Duplicate keys detected -->
                   <v-text-field  outlined v-model="item.question" placeholder="What is your True/False question?" class="mx-auto" ></v-text-field>
                     <v-text-field  outlined v-model="item.Tanswer" placeholder="What is the TRUE answer?" class="mx-auto" ></v-text-field>
                       <v-text-field  outlined v-model="item.Fanswer" placeholder="What is the FALSE answer?" class="mx-auto" ></v-text-field>
@@ -148,6 +152,7 @@ export default {
       
       multChoiceInputs: [],
       MCSingle: [
+        {'test': 'test'},
         {'question': ''},
         {'trueAnswer': '' },
         {'false1': ''},
@@ -167,7 +172,8 @@ export default {
         {'question': ''},
         {'Tanswer': ''},
         {'Fanswer': ''}
-      ]
+      ],
+      All_ans: []
 
 
 
@@ -176,35 +182,41 @@ export default {
     }
   },
   methods: {
+
     render(){
-      this.displayQuestions = true
-
-      this.inputTF.length =  this.items[this.tfNum]
-    
-      this.multChoiceInputs.length = this.items[this.multChoiceNum]
-       this.inputInput.length = this.items[this.inputNum]
+      if (this.tfNum == null ||  this.multChoiceNum== null ||  this.inputNum == null){
+         alert('Please fill in all required questions.')
+            return;
+      }else{
+        this.displayQuestions = true
+        this.inputTF.length =  this.items[this.tfNum]
+        this.multChoiceInputs.length = this.items[this.multChoiceNum]
+        this.inputInput.length = this.items[this.inputNum]
      
-      for (let i= 0; i< this.multChoiceNum; i++){
-        this.multChoiceInputs[i] = this.MCSingle
+      this.create_questions(this.multChoiceNum, this.multChoiceInputs, this.MCSingle);
+      this.create_questions(this.inputNum, this.inputInput, this.inputAnswer);
+      this.create_questions(this.tfNum, this.inputTF, this.inputAnswer)
       }
 
-       for (let i= 0; i< this.inputNum; i++){
-        this.inputInput[i] = this.inputAnswer
-      }
+    },
+    saveToFile(json){
+    var fs = require('fs');
+    fs.writeFile('src/json/created.json', json, 'utf8');
+    },
 
-      for (let i= 0; i< this.tfNum; i++){
-        this.inputTF[i] = this.inputAnswer
-      }
-
+    appendAnswers(){
+      this.All_ans = this.inputInput.concat(this.multChoiceInputs);
+      this.All_ans = this.All_ans.concat(this.inputTF);
+      this.saveToFile(this.All_ans)
 
 
     },
-    appendAnswers(){
-    //for x in input,
-   // add  {x , inputanswer[x]}
-
-
+    create_questions(numberOfQuestions, list, formattedJson){
+         for (let i= 0; i< numberOfQuestions; i++){
+        list[i] = formattedJson
+      }
     }
+
   }
 
 }

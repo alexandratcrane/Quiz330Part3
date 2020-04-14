@@ -7,7 +7,7 @@
       color="blue"
       dark
        elevate-on-scroll
-      scroll-target="#scrolling-techniques-7"
+
       
     >
 
