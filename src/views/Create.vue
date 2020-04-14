@@ -16,8 +16,8 @@
           :items="items"
           label="How many Multiple choice questions?"
           solo
-        ></v-select>
-  
+        ></v-select> 
+
           <v-select
              class = "v-select"
            v-model="inputNum"
@@ -33,7 +33,7 @@
           label="How many True/False questions?"
           solo
         ></v-select>
-     
+
          
              <v-btn
              v-on:click="render()">
@@ -43,6 +43,8 @@
             </v-col>
           
       
+
+
         </v-form>
         <div
          v-if="displayQuestions == true">
@@ -68,46 +70,46 @@
                
              
             
-                  </div>
+                  </div> 
 
 
                    <div>
-               <span v-for="n in inputNum"
-               :key="n">
+               <v-card
+                  raised
+                  v-for="item in inputInput" :key="item.question"
+                  class="mx-auto">
+             
+                  <v-text-field  outlined v-model="item.question" placeholder="What is your Input question?" class="mx-auto" ></v-text-field>
+                  <v-text-field  outlined v-model="item.answer" placeholder="What is the answer?" class="mx-auto" ></v-text-field>
+                 </v-card>
+              
                
-               
+              
+                  </div> 
+
+                 
+
+
+
+  <div>
                  <v-card
                   raised
+                  v-for="item in inputTF" :key="item.question"
                   class="mx-auto">
-                  <v-text-field  outlined v-model="inputInput[n]" placeholder="What is your Input question?" class="mx-auto" ></v-text-field>
-                  <v-text-field  outlined v-model="inputAnswer[n]" placeholder="What is the answer?" class="mx-auto" ></v-text-field>
+                  <v-text-field  outlined v-model="item.question" placeholder="What is your True/False question?" class="mx-auto" ></v-text-field>
+                    <v-text-field  outlined v-model="item.Tanswer" placeholder="What is the TRUE answer?" class="mx-auto" ></v-text-field>
+                      <v-text-field  outlined v-model="item.Fanswer" placeholder="What is the FALSE answer?" class="mx-auto" ></v-text-field>
+
                  </v-card>
                
                
-                </span>
-                  </div>
-
-
-
-   <div>
-               <span v-for="n in tfNum"
-               :key="n">
-               
-                 <v-card
-                  raised
-                  class="mx-auto">
-                  <v-text-field  outlined v-model="inputTF[n]" placeholder="What is your True/False question?" class="mx-auto" ></v-text-field>
-
-                 </v-card>
-               
-               
-                </span>
-                  </div>
+              
+                  </div> 
 
                <router-link class="routerLink" to="/view-quiz">
 
 
-      <v-btn x-large color="blue"
+      <v-btn style="margin-top: 50px; margin-bottom: 50px;" x-large color="blue"
       class="ma-2 white--text">
           Create a new Quiz
       </v-btn>
@@ -143,8 +145,8 @@ export default {
       tfNum : null,
       displayQuestions: false,
 
-
-
+      
+      multChoiceInputs: [],
       MCSingle: [
         {'question': ''},
         {'trueAnswer': '' },
@@ -153,16 +155,19 @@ export default {
         {'false3': ''}
         ],
 
-     multChoiceInputs: [],
-      
-
-      //create object that will be used inside of inputmultchoice
-    
       inputInput: [],
-      inputAnswer: [],
+      inputAnswer: [
+        {'question': ''},
+        {'answer': ''}
+      ],
 
 
       inputTF: [],
+      tfAnswer: [
+        {'question': ''},
+        {'Tanswer': ''},
+        {'Fanswer': ''}
+      ]
 
 
 
@@ -173,14 +178,25 @@ export default {
   methods: {
     render(){
       this.displayQuestions = true
-      this.inputTF.length =  this.items[this.multChoiceNum]
+
+      this.inputTF.length =  this.items[this.tfNum]
+    
       this.multChoiceInputs.length = this.items[this.multChoiceNum]
-      
-      this.inputInput.length = this.items[this.inputNum]
+       this.inputInput.length = this.items[this.inputNum]
      
       for (let i= 0; i< this.multChoiceNum; i++){
         this.multChoiceInputs[i] = this.MCSingle
       }
+
+       for (let i= 0; i< this.inputNum; i++){
+        this.inputInput[i] = this.inputAnswer
+      }
+
+      for (let i= 0; i< this.tfNum; i++){
+        this.inputTF[i] = this.inputAnswer
+      }
+
+
 
     },
     appendAnswers(){
@@ -216,4 +232,5 @@ export default {
      margin: 25px;
      
 }
+
 </style>
