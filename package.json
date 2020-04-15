@@ -10,11 +10,13 @@
   "dependencies": {
     "core-js": "^3.4.4",
     "vue": "^2.6.10",
-    "vuetify": "^2.2.20"
+    "vue-router": "^3.1.6",
+    "vuetify": "^2.1.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.0",
+    "@vue/cli-plugin-router": "^4.3.1",
     "@vue/cli-service": "^4.1.0",
     "babel-eslint": "^10.0.3",
     "eslint": "^5.16.0",
@@ -36,7 +38,8 @@
     ],
     "rules": {},
     "parserOptions": {
-      "parser": "babel-eslint"
+      "parser": "babel-eslint",
+      "no-console": "off"
     }
   },
   "browserslist": [
