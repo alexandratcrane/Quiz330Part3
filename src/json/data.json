@@ -72,7 +72,7 @@
                 "0":true,
                 "1":false
             },
-            "answer": false,
+            "answer": 1,
             "correct": null,
             "input":""
         }

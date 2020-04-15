@@ -116,6 +116,7 @@ export default {
             fill: Json.filled,
             multChoice: Json.multChoice,
             trueFalse:Json.TF,
+            displayAnswer: false
         }
     },
     methods: {
@@ -131,6 +132,8 @@ export default {
             return input;
             }
         },
+
+
     checkAgainstAnswerFill(questionNumber, answer){
         const input = this.processInput(JSON.stringify(this.fill[questionNumber].input))
         
@@ -143,28 +146,32 @@ export default {
    
     validateJSON(){
     try { 
-        
+
     this.checkAgainstAnswerFill(0, this.processInput(JSON.stringify(this.fill[0].answer)))
     this.checkAgainstAnswerFill(1, this.processInput(JSON.stringify(this.fill[1].answer)))
     this.checkAgainstAnswerFill(2, this.processInput(JSON.stringify(this.fill[2].answer)))
     this.checkAgainstAnswerFill(3, this.processInput(JSON.stringify(this.fill[3].answer)))
-if (this.one.input == this.one.answer){
-    this.one.correct = true
+    
+if (this.multChoice[0].input == this.multChoice[0].answer){
+    this.multChoice[0].correct = true
 }else{
-    this.one.correct = false
+    this.multChoice[0].correct = false
 }
-if (this.two.input == this.two.answer){
-    this.two.correct = true
+if (this.multChoice[1].input == this.multChoice[1].answer){
+    this.multChoice[1].correct = true
 }else{
-    this.two.correct = false
-}
-if (this.trueFalse.input == 1){
-    this.trueFalse.correct = true
+    this.multChoice[1].correct = false
+} this.displayAnswer =  true
+
+if (this.trueFalse[0].input == this.trueFalse[0].answer){
+    this.trueFalse[0].correct = true
+   
 }else{
-    this.trueFalse.correct = false
+    this.trueFalse[0].correct = false
 }
-  this.displayAnswer =  true
-    }catch(e) { alert(e); }
+
+   this.displayAnswer =  true
+    }catch(e) { alert(e); } 
     
 }
     }
