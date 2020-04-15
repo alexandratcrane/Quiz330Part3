@@ -21,6 +21,6 @@ export default {
 
 <style scoped>
 .question{ 
-  margin-top: -50%;
+  margin-top: 10%;
   } 
 </style>
