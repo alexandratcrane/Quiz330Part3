@@ -53,7 +53,7 @@
                     </v-radio-group>
                      <v-card-subtitle
                     v-if="displayAnswer == true"
-                    v-text="'correct input number:  ' + q.answer"
+                    v-text="'correct answer number:  ' + q.answer"
                     v-bind:style=" q.correct ? 'background-color: #79d279' : 'background-color: #e60000' ">
                     </v-card-subtitle>
 
@@ -116,6 +116,7 @@ export default {
             fill: Json.filled,
             multChoice: Json.multChoice,
             trueFalse:Json.TF,
+            displayAnswer: false
         }
     },
     methods: {
@@ -131,42 +132,41 @@ export default {
             return input;
             }
         },
-    checkAgainstAnswerFill(questionNumber, answer){
-        const input = this.processInput(JSON.stringify(this.fill[questionNumber].input))
-        
-        if (input == answer){
-            this.fill[questionNumber].correct = true
-        } else {
-            this.fill[questionNumber].correct = false
+
+    // Checks to see if JSON in fill type questions is true or false
+    checkAgainstAnswerFill(qFilled){
+        for( let i =0; i< qFilled; i++){
+          
+             if (this.processInput(JSON.stringify(qFilled[i].input)) == this.processInput(JSON.stringify(qFilled[i].answer))){
+                 qFilled[i].correct = true
+             }else {
+                  qFilled[i].correct = false
+             }
         }
     },
    
     validateJSON(){
     try { 
-        
-    this.checkAgainstAnswerFill(0, this.processInput(JSON.stringify(this.fill[0].answer)))
-    this.checkAgainstAnswerFill(1, this.processInput(JSON.stringify(this.fill[1].answer)))
-    this.checkAgainstAnswerFill(2, this.processInput(JSON.stringify(this.fill[2].answer)))
-    this.checkAgainstAnswerFill(3, this.processInput(JSON.stringify(this.fill[3].answer)))
-if (this.one.input == this.one.answer){
-    this.one.correct = true
-}else{
-    this.one.correct = false
-}
-if (this.two.input == this.two.answer){
-    this.two.correct = true
-}else{
-    this.two.correct = false
-}
-if (this.trueFalse.input == 1){
-    this.trueFalse.correct = true
-}else{
-    this.trueFalse.correct = false
-}
-  this.displayAnswer =  true
-    }catch(e) { alert(e); }
     
-}
+   this.checkAgainstAnswerFill(this.fill)
+   this.checkAll(this.multChoice)
+   this.checkAll(this.trueFalse)
+    this.displayAnswer =  true
+    
+    }catch(e) { alert(e); } 
+    
+},
+checkAll(qType){
+      for (let i= 0; i< qType; i++){
+      if (this.qType[i].input == this.qType[i].answer){
+    this.qType[i].correct = true
+}else{
+    this.qType[i].correct = false
+} 
+      }
+},
+
+
     }
 }
     
