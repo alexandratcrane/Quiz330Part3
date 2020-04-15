@@ -19,7 +19,7 @@
 
                         <v-text-field  outlined v-model="q.input" placeholder="Your answer" class="mx-auto" ></v-text-field>
 
-                    <!--    <p style="text-align: center" id="correct" >Your answer: {{ q.input }}</p>     -->
+                  <p style="text-align: center" id="correct" >Your answer: {{ q.input }}</p>   
                     <v-card-subtitle
                         v-if="displayAnswer == true"
                         v-text="'correct answer: ' + q.answer"
@@ -51,8 +51,13 @@
                         </v-radio>
                   
                     </v-radio-group>
+                                         <v-card-subtitle
+                    v-if="displayAnswer == true"
+                     v-text="'Your answer:  ' + q.input"
+                     ></v-card-subtitle>
                      <v-card-subtitle
                     v-if="displayAnswer == true"
+                    
                     v-text="'correct answer number:  ' + q.answer"
                     v-bind:style=" q.correct ? 'background-color: #79d279' : 'background-color: #e60000' ">
                     </v-card-subtitle>
@@ -79,6 +84,10 @@
                             :label="`${n}`">
                         </v-radio>
                          </v-radio-group>
+                          <v-card-subtitle
+                    v-if="displayAnswer == true"
+                     v-text="'Your answer:  ' + q.input"
+                     ></v-card-subtitle>
                           <v-card-subtitle
                     v-if="displayAnswer == true"
                     v-text="'correct answer: ' + q.answer"
@@ -136,9 +145,12 @@ export default {
     // Checks to see if JSON in fill type questions is true or false
     checkAgainstAnswerFill(qFilled){
         for( let i =0; i< qFilled; i++){
-          
-             if (this.processInput(JSON.stringify(qFilled[i].input)) == this.processInput(JSON.stringify(qFilled[i].answer))){
+            var input =this.processInput(JSON.stringify(this.qFilled[i].input))
+            var answer = this.processInput(JSON.stringify(qFilled[i].answer))
+                alert(i)
+             if (input == answer){
                  qFilled[i].correct = true
+                 alert(qFilled[i].correct)
              }else {
                   qFilled[i].correct = false
              }
@@ -147,8 +159,17 @@ export default {
    
     validateJSON(){
     try { 
-    
+    alert('hi)')
    this.checkAgainstAnswerFill(this.fill)
+    for( let i =0; i< this.fill; i++){
+  if (this.processInput(JSON.stringify(this.fill[i].input)) == this.processInput(JSON.stringify(this.fill[i].answer))){
+                
+                 this.fill[i].correct = true
+                 alert(this.fill[i].correct)
+             }else {
+                 this.fill[i].correct = false
+             }
+    }
    this.checkAll(this.multChoice)
    this.checkAll(this.trueFalse)
     this.displayAnswer =  true

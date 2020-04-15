@@ -4,7 +4,7 @@
 
     <v-app-bar
       absolute
-      color="blue"
+      color="#5E35B1" 
       dark
        elevate-on-scroll
 
