@@ -225,7 +225,9 @@ export default {
 
 <style scoped>
 .create{
-  margin-top: -50%;
+  position: fixed;
+  top: 100px;
+  margin-left: 30%;
 }
 .v-card{
    margin-left: auto;
