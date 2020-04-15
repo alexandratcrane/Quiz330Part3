@@ -172,7 +172,7 @@ export default {
         {"Tanswer": ''},
         {"Fanswer": ''}
       ],
-      All_ans: []
+     ans: []
 
 
 
@@ -180,7 +180,8 @@ export default {
 
     }
   },
-  afterUpdate(){
+  beforeUpdate(){
+
   },
   methods: {
    
@@ -191,56 +192,53 @@ export default {
          alert('Please fill in all required questions.')
             return;
       }else{
-       
          this.inputTF.length =  this.items[this.tfNum]
          this.multChoiceInputs.length = this.items[this.multChoiceNum]
-      
-      
+         this.inputInput.length = this.items[this.inputNum]
        
-        this.inputInput.length = this.items[this.inputNum]
-
-
+          
           for (let i= 0; i< this.inputNum; i++){
-           this.inputAnswer = Array.from(this.inputAnswer)
-     this.inputInput[i] = this.inputAnswer
-
+          this.inputAnswer = Array.from(this.inputAnswer)
+          this.inputInput[i] = this.inputAnswer
+          this.ans.push(this.inputAnswer)
           }
+            // this.ALL_ans= this.ALL_ans.push(this.inputInput)
 
        for (let i= 0; i< this.multChoiceNum; i++){
            this.MCSingle = Array.from(this.MCSingle)
-
-     this.multChoiceInputs[i] = this.MCSingle
-    }
+           this.multChoiceInputs[i] = this.MCSingle
+             this.ans.push(this.MCSingle)
+    } 
+    // this.ALL_ans = this.ALL_ans + this.multChoiceInputs
 
      for (let i= 0; i< this.tfNum; i++){
-           this.tfAnswer = Array.from(this.tfAnswer)
-     this.inputTF[i] = this.tfAnswer       
+          this.tfAnswer = Array.from(this.tfAnswer)
+          this.inputTF[i] = this.tfAnswer    
+            this.ans.push(this.tfAnswer)   
     }
+
+
+     
+      console.log(this.ans)
+       
+
     
-    console.log(this.inputTF)
+
 
   this.displayQuestions = true
-
-
-
-
-    
-  
       }
 
     },
 
      logger: function(){
-    console.log(this.inputInput)
-    console.log(this.inputTF)
-    console.log(this.multChoiceInputs)
+
+
+    this.All_ans =   this.inputInput + this.inputTF + this.multChoiceInputs
+    alert(JSON.stringify(this.inputInput))
+    alert(this.ALL_ans)
     },
 
-    appendAnswers(){
-      this.All_ans = this.inputInput.concat(this.multChoiceInputs);
-      this.All_as = this.All_ans.concat(this.inputTF);
-      this.saveToFile(this.All_ans)
-    },
+   
   
   }
 
