@@ -225,7 +225,7 @@ export default {
 
 <style scoped>
 .create{
-  position: fixed;
+  
   top: 100px;
   margin-left: 30%;
 }
