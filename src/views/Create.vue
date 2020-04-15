@@ -9,7 +9,7 @@
                <v-card class = "v-card">
                Please select the number of questions you would like created
                      
-<!--
+
         <v-select
         class = "v-select"
          v-model="multChoiceNum"
@@ -17,22 +17,22 @@
           label="How many Multiple choice questions?"
           solo
         ></v-select> 
--->
-          <v-select
+
+     <v-select
              class = "v-select"
            v-model="inputNum"
           :items="items"
           label="How many Input questions? "
-         
-        ></v-select>
-<!-- 
+          solo
+        ></v-select> 
+ 
        <v-select
           class = "v-select"
           v-model="tfNum"
           :items="items"
           label="How many True/False questions?"
-   
-        ></v-select> -->
+          solo
+        ></v-select>
 
  
              <v-btn dark color="#cf2d2d" class="ma-2 white--text"
@@ -51,20 +51,19 @@
         <v-form
             ref="form">
             <v-col>
-                <!--
                 
-                <div  v-for="item in multChoiceInputs" :key="item.question">
-                  TODO: changing key only allows for one keystroke at at a time
+                
+                 <div  v-for="(item, index) in multChoiceInputs" :key="index">
+                 
                  <v-card
                   raised
-                 
                   class="mx-auto">
                   
-    <v-text-field  outlined v-model="item.question" placeholder="What is your Multiple Choice question?" ></v-text-field>
-                   <v-text-field  outlined v-model="item.trueAnswer"  :value="item.trueAnswer" placeholder="What is the true answer?" class="mx-auto" ></v-text-field>
-                    <v-text-field  outlined v-model="item.false1" :value="item.false1" placeholder="What is the a false answer?" class="mx-auto" ></v-text-field>
-                     <v-text-field  outlined v-model="item.false2" :value="item.false2" placeholder="What is the a false answer?" class="mx-auto" ></v-text-field>
-                      <v-text-field  outlined v-model="item.false3" :value="item.false3" placeholder="What is a false answer?" class="mx-auto" ></v-text-field>
+                  <v-text-field  outlined v-model="item.question" placeholder="What is your Multiple Choice question?" ></v-text-field>
+                  <v-text-field  outlined v-model="item.trueAnswer"  :value="item.trueAnswer" placeholder="What is the true answer?" class="mx-auto" ></v-text-field>
+                  <v-text-field  outlined v-model="item.false1" :value="item.false1" placeholder="What is the a false answer?" class="mx-auto" ></v-text-field>
+                  <v-text-field  outlined v-model="item.false2" :value="item.false2" placeholder="What is the a false answer?" class="mx-auto" ></v-text-field>
+                  <v-text-field  outlined v-model="item.false3" :value="item.false3" placeholder="What is a false answer?" class="mx-auto" ></v-text-field>
 
                  </v-card>
                
@@ -73,7 +72,7 @@
             
                   </div> 
 
--->
+
                    <div
                   v-for="(item, index) in inputInput" 
                   :key="index"
@@ -86,20 +85,22 @@
                     
                 <v-text-field  outlined v-model="item.question" placeholder="Your Question" class="mx-auto" ></v-text-field>
                 <v-text-field  outlined v-model="item.answer" placeholder="What is the answer?" class="mx-auto" ></v-text-field>
+                 <p>The value of the input is: {{ item.question }}</p>
+                  <p>The value of the answer is: {{ item.answer }}</p>
               
                 </v-card>
               
-                </div> 
+                </div>   
 
                  
-                  <!-- <div v-for="(item, index) in inputTF" :key="index"
-                  class="mx-auto">
 
 
+
+  <div
+   v-for="(item, index) in inputTF" :key="index">
                  <v-card
                   raised
                   class="mx-auto">
-         
                   <v-text-field  outlined v-model="item.question" placeholder="What is your True/False question?" class="mx-auto" ></v-text-field>
                   <v-text-field  outlined v-model="item.Tanswer" placeholder="What is the TRUE answer?" class="mx-auto" ></v-text-field>
                   <v-text-field  outlined v-model="item.Fanswer" placeholder="What is the FALSE answer?" class="mx-auto" ></v-text-field>
@@ -108,18 +109,19 @@
                
                
               
-                  </div>  -->
+                  </div> 
 
-           
-
-               <router-link class="routerLink" to="/view-quiz">
+            
+<!-- 
+               <router-link class="routerLink" to="/view-quiz"> -->
 
 
       <v-btn style="margin-top: 50px; margin-bottom: 50px;" x-large color="blue"
-      class="ma-2 white--text">
+      class="ma-2 white--text"
+        v-on:click="logger()">
           Create a new Quiz
       </v-btn>
-      </router-link>
+      <!-- </router-link>  -->
        
 
 
@@ -136,23 +138,19 @@ import Nav from '@/components/Nav.vue'
 
 
 export default {
-  
-   name: 'Create',
-  
-   
+
+  name: 'Create',
   components: {
     Nav,
-  
   },
   data(){
-    return {
+      return {
       items: [0,1, 2, 3, 4],
       multChoiceNum: null,
       inputNum: null,
       tfNum : null,
-      displayQuestions: true,
+      displayQuestions: false,
 
-      
       multChoiceInputs: [],
       qs: {"question": ''},
       as: {"answer": ''},
@@ -166,9 +164,9 @@ export default {
         ],
 
       inputInput: [],
-     inputAnswer:  [{question: ''},{answer: ''} ],
+     inputAnswer:  [{"question": ''},{"answer": ''} ],
       input: [],
-            inputTF: [],
+      inputTF: [],
       tfAnswer: [
         {"question": ''},
         {"Tanswer": ''},
@@ -182,78 +180,68 @@ export default {
 
     }
   },
-
-   beforeUpdate(){
-          
-           this.inputInput =   this.create_questions(this.inputNum, this.inputInput, this.inputAnswer);
-            // this.inputTF =   this.create_questions(this.tfNum, this.inputTFt, this.tfAnswer);
-          this.displayQuestions = true
- },
+  afterUpdate(){
+  },
   methods: {
+   
    
     render: function(){
 
-      if ( this.inputNum == null){
+      if ( this.tfNum== null || this.inputNum == null || this.multChoiceNum == null){
          alert('Please fill in all required questions.')
             return;
       }else{
        
-        this.inputTF.length =  this.items[this.tfNum]
-        console.log(this.tfNum)
-        // this.multChoiceInputs.length = this.items[this.multChoiceNum]
+         this.inputTF.length =  this.items[this.tfNum]
+         this.multChoiceInputs.length = this.items[this.multChoiceNum]
+      
+      
        
         this.inputInput.length = this.items[this.inputNum]
 
 
           for (let i= 0; i< this.inputNum; i++){
            this.inputAnswer = Array.from(this.inputAnswer)
-     //console.log(typeof(ans))
-     this.inputInput[i] = this.inputAnswer  
+     this.inputInput[i] = this.inputAnswer
+
+          }
+
+       for (let i= 0; i< this.multChoiceNum; i++){
+           this.MCSingle = Array.from(this.MCSingle)
+
+     this.multChoiceInputs[i] = this.MCSingle
     }
 
-    //   for (let i= 0; i< this.tfNum; i++){
-    //        this.tfAnswer = Array.from(this.tfAnswer)
-    //  //console.log(typeof(ans))
-    //  this.inputTF[i] = this.inputTF
-    // }
+     for (let i= 0; i< this.tfNum; i++){
+           this.tfAnswer = Array.from(this.tfAnswer)
+     this.inputTF[i] = this.tfAnswer       
+    }
     
     console.log(this.inputTF)
 
+  this.displayQuestions = true
 
 
 
-         
-      // this.create_questions(this.multChoiceNum, this.multChoiceInputs, this.MCSingle);
 
-
-         
-      // this.create_questions(this.tfNum, this.inputTF, this.inputAnswer)
-
-        this.displayQuestions = true
+    
+  
       }
 
     },
 
+     logger: function(){
+    console.log(this.inputInput)
+    console.log(this.inputTF)
+    console.log(this.multChoiceInputs)
+    },
+
     appendAnswers(){
       this.All_ans = this.inputInput.concat(this.multChoiceInputs);
-      this.All_ans = this.All_ans.concat(this.inputTF);
+      this.All_as = this.All_ans.concat(this.inputTF);
       this.saveToFile(this.All_ans)
     },
-    create_questions(numberOfQuestions, list, ans){
-      
-         for (let i= 0; i< numberOfQuestions; i++){
-           ans = Array.from(ans)
-     //console.log(typeof(ans))
-     list[i] = ans
-        
-       
-          
-    }
-    
- //  console.log(list)
-   return list
-    } 
-
+  
   }
 
 }
