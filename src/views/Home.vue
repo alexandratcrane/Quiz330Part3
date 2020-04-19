@@ -22,16 +22,33 @@
       </v-btn>
       </router-link>
 
+
+         <v-card>
+             HERE
+             <div v-for="survey in surveys" v-bind:key="survey.id">
+          <v-title>{{ survey.name}}</v-title>
+
+    <router-link :to="`surveys/${survey.id}`" class="card-footer-item">Take Survey</router-link>
+             </div>
+         </v-card>
    
     <router-view/>
     </div>
 </v-app>
 </template>
 <script>
+import { mapState } from 'vuex'
 
 
 export default {
     name: 'home',
+    computed: mapState({
+    surveys: state => state.surveys
+  }),
+  beforeMount(){
+      
+      this.$store.dispatch('loadSurveys')
+  }
     
 }
 </script>

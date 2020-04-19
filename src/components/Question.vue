@@ -138,7 +138,7 @@
 
 
 <script>
-import Json from '../json/data.json'
+import Json from '@/api/json/data.json'
 export default {
     data() {
         return{

@@ -3,13 +3,27 @@
       <Nav/>
   <div >
       <div class = "create">
+         <div>
+                    <h3>{{name}}</h3>
+        </div>
         <v-form
-            ref="form"
-            lazy-validation>
-     
+            ref="form">
+
+
+          <v-card class = "v-card">
+            <v-title> Name your Quiz </v-title>
+             <v-text-field  outlined v-model="name" id = "name" placeholder="Survey Name" class="mx-auto" ></v-text-field>
+          </v-card>
+              <v-card class = "v-card">
+            <v-title>  Give Quiz ID </v-title>
+             <v-text-field  outlined v-model="id" id = "id" placeholder="Survey Name" class="mx-auto" ></v-text-field>
+          </v-card>
+
+            
+
+
             <v-col>
-               <v-card class = "v-card">
-               Please select the number of questions you would like created
+            <v-card class = "v-card"> Please select the number of questions you would like created
                      
 
         <v-select
@@ -67,11 +81,11 @@
                   class="mx-auto"
                    v-if="item.length == 5">
                   
-                  <input  outlined v-model="item.question" placeholder="What is your Multiple Choice question?" >
-                  <input  outlined v-model="item.trueAnswer"   placeholder="What is the true answer?" class="mx-auto" >
-                  <input  outlined v-model="item.false1"  placeholder="What is the a false answer?" class="mx-auto" >
-                  <input  outlined v-model="item.false2"  placeholder="What is the a false answer?" class="mx-auto" >
-                  <input  outlined v-model="item.false3"  placeholder="What is a false answer?" class="mx-auto" >
+                  <v-text-field outlined v-model="item.question" placeholder="What is your Multiple Choice question?" />
+                  <v-text-field   outlined v-model="item.trueAnswer"   placeholder="What is the true answer?" class="mx-auto" />
+                  <v-text-field   outlined v-model="item.false1"  placeholder="What is the a false answer?" class="mx-auto" />
+                  <v-text-field  outlined v-model="item.false2"  placeholder="What is the a false answer?" class="mx-auto"/>
+                  <v-text-field   outlined v-model="item.false3"  placeholder="What is a false answer?" class="mx-auto" />
 
                  </v-card>
 
@@ -81,11 +95,9 @@
                   v-if="item.length == 2">
               
                     
-                <input  outlined v-model="item.question" placeholder="Your Question" class="mx-auto" >
-                <input outlined v-model="item.answer" placeholder="What is the answer?" class="mx-auto" >
-                 <p>The value of the input is: {{ item.question }}</p>
-                  <p>The value of the answer is: {{ item.answer }}</p>
-              
+                <v-text-field  outlined v-model="item.question" placeholder="Your Question" class="mx-auto" />
+                <v-text-field  outlined v-model="item.answer" placeholder="What is the answer?" class="mx-auto"/>
+     
                 </v-card>
 
 
@@ -94,9 +106,9 @@
                   raised
                   class="mx-auto"
                   v-if="item.length == 3">
-                  <input  outlined v-model="item.question" placeholder="What is your True/False question?" class="mx-auto" >
-                  <input  outlined v-model="item.Tanswer" placeholder="What is the TRUE answer?" class="mx-auto" >
-                  <input  outlined v-model="item.Fanswer" placeholder="What is the FALSE answer?" class="mx-auto" >
+                  <v-text-field   outlined v-model="item.question" placeholder="What is your True/False question?" class="mx-auto" />
+                  <v-text-field   outlined v-model="item.Tanswer" placeholder="What is the TRUE answer?" class="mx-auto" />
+                  <v-text-field  outlined v-model="item.Fanswer" placeholder="What is the FALSE answer?" class="mx-auto" />
 
                  </v-card>
 
@@ -106,9 +118,9 @@
 
        
 
-        <v-btn style="margin-top: 50px; margin-bottom: 50px;" x-large color="blue"
+      <v-btn style="margin-top: 50px; margin-bottom: 50px;" x-large color="blue"
       class="ma-2 white--text"
-        @click="logger()">
+        v-on:click="submitSurvey">
           Create a new Quiz
       </v-btn>
        </v-col>
@@ -127,6 +139,9 @@ components:{
 },
 data(){
       return {
+
+      name: '',
+      id: '',
       items: [0,1, 2, 3, 4],
       multChoiceNum: null,
       inputNum: null,
@@ -154,7 +169,10 @@ data(){
         {"Tanswer": ''},
         {"Fanswer": ''}
       ],
-     ans: []
+    //for template creation
+     ans: [],
+     //for Q&A creation
+     questions: []
     }
   },
  
@@ -162,9 +180,10 @@ data(){
   methods: {
     render: function(){
 
-      if ( this.tfNum== null || this.inputNum == null || this.multChoiceNum == null){
+      if ( this.tfNum == null || this.inputNum == null || this.multChoiceNum == null){
          alert('Please fill in all required questions.')
-            return;
+            return
+            
       }else{
          this.inputTF.length =  this.items[this.tfNum]
          this.multChoiceInputs.length = this.items[this.multChoiceNum]
@@ -193,30 +212,40 @@ data(){
 
 
      
-        console.log(this.ans)
+   
 
 
         this.displayQuestions = true
-
-        require('fs').writeFile(
-
-    '@/json/selected.json',
-
-    JSON.stringify(this.ans),
-
-    function (err) {
-        if (err) {
-            console.error('Crap happens');
-        }
     }
-);
-      }
 
     },
-      logger(){
-     
-      alert(JSON.stringify(this.ans))
-    }
+
+       submitSurvey() {
+         this.questions = this.ans
+          console.log(this.questions)
+          alert(this.questions)
+    this.$store.dispatch('submitNewSurvey', {
+      name: this.name,
+      id: this.name,
+      questions: this.questions
+
+   
+    }).then(() => this.$router.push('/'))
+   
+  },
+  
+   appendQuestion(CreateQuestion) {
+      this.questions.push(CreateQuestion)
+    },
+    
+    saveQuestion() {
+       this.appendQuestion(this.ans)
+      this.$emit('questionComplete', {
+        question: this.question,
+      
+      })
+    },
+  
   }
 
 }

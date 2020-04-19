@@ -22,6 +22,7 @@
       <router-link class="routerLink" to="/create-quiz">Create new quiz</router-link>
 
       <router-link  class="routerLink" to="/default-quiz">Use quiz template</router-link>
+       <router-link  class="routerLink" to="/surveys">survey</router-link>
 
       
    

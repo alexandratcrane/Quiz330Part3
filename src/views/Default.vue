@@ -15,7 +15,10 @@ export default {
   components: {
   Question,
   Nav
-  }
+  },
+methods: {
+   
+}
 }
 </script>
 
@@ -23,4 +26,6 @@ export default {
 .question{ 
   margin-top: -50%;
   } 
+
+
 </style>
