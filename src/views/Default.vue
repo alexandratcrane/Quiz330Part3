@@ -1,6 +1,6 @@
 <template>
   <div class="default">
-<Nav/>
+  <Nav/>
     <Question class="question"/>
   </div>
 </template>
@@ -13,7 +13,7 @@ import Nav from '@/components/Nav.vue'
 export default {
   name: 'Default',
   components: {
-    Question,
+  Question,
   Nav
   }
 }
