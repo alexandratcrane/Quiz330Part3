@@ -3,8 +3,9 @@
     <div class="home">
         
        <h1> Welcome to the quiz app! </h1>
-        <a href="/" ><img src="@/assets/mushy.png"> </a>
-
+        <router-link class="routerLink" to="/Home">
+         <a href="/" ><img src="@/assets/mushy.png"> </a>
+        </router-link>
     
       <router-link class="routerLink" to="/create-quiz">
       <v-btn x-large color="#cf2d2d"

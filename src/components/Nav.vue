@@ -17,7 +17,7 @@
         <v-toolbar-title>Quiz App</v-toolbar-title>
     <v-spacer/>
           
-      <router-link class="routerLink" to="/"> Home</router-link> 
+      <router-link class="routerLink" to="/Home"> Home</router-link>
 
       <router-link class="routerLink" to="/create-quiz">Create new quiz</router-link>
 

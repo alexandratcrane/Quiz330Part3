@@ -4,20 +4,20 @@ import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
-  const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/create-quiz',
-    name: 'Create',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Create.vue')
-    } ,
+ const routes =  [
+    {
+      path: '/Home',
+      name: 'Home',
+      component: Home
+    },
+    {
+      path: '/create-quiz',
+      name: 'Create',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "about" */ '../views/Create.vue')
+    },
     {
       path: '/default-quiz',
       name: 'Default',
@@ -26,7 +26,7 @@ Vue.use(VueRouter)
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ '../views/Default.vue')
     },
-     {
+    {
       path: '/view-quiz',
       name: 'Render',
       // route level code-splitting
@@ -34,7 +34,12 @@ Vue.use(VueRouter)
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ '../views/Rendered.vue')
     },
-]
+    {
+      path: '/login',
+      name: 'Login',
+      component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue')
+    }
+  ]
 
 const router = new VueRouter({
   mode: 'history',
