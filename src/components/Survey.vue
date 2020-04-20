@@ -3,6 +3,9 @@
 
   <Nav/>
 <div
+
+
+
 v-for="(x,idx) in surveys" :key="idx">
 
 <div  class="quizzys" v-if="x.id == id">
@@ -12,18 +15,23 @@ v-for="(x,idx) in surveys" :key="idx">
     <v-card-title v-text="question.question"> </v-card-title>
 
       <v-radio-group>
+
                         <div  v-for="(n, idx) in question.choices"
                             :key="n">
                             {{idx}}
                         <v-radio 
                         class="idx"
-                            :label="`${n}`" >
+                            :label="`${n.text}`" >
                         </v-radio>
                         </div>
                     </v-radio-group>
 
   </v-card>
   </div>
+
+  <v-btn class="btn">
+    Submit and view results! (no functionality yet)
+  </v-btn>
   </div>
 
 </div>
@@ -45,8 +53,8 @@ export default {
 },
   data() {
     return {
-       survey: [],
-       id: this.$route.params.id
+       id: this.$route.params.id,
+       
     }
   },
   computed: mapState({
@@ -55,11 +63,8 @@ export default {
 
   beforeMount() {
   this.$store.dispatch('loadSurveys')
-     console.log(this.$route.params.id)
-  fetchSurvey(parseInt(this.$route.params.id))
-      .then((response) => {
-        this.survey = response
-      })
+  console.log('ROUTE  ' + this.$route.params.id)
+  
   
   
 
@@ -80,6 +85,6 @@ export default {
 }
 
 .btn{
-  margin-top: -50%;
+  margin-bottom: 10%;
 }
 </style>

@@ -6,17 +6,17 @@ var surveys = [{
     questions: [
         {
             id: 1,
-            text: 'What is the worlds most profitable company (Net Profits)?',
+            question: 'What is the worlds most profitable company (Net Profits)?',
             choices: [
-                {text: 'Google', selected: 0 },
-                {text: 'Apple', selected: 0 },
-                {text: 'Microsoft', selected: 0 }]
+                {text: 'Google'},
+                {text: 'Apple'},
+                {text: 'Microsoft'}]
         }, {
             id: 2,
-            text: 'What foot did Neil Armstrong first set on the moon? ',
+            question: 'What foot did Neil Armstrong first set on the moon? ',
             choices: [
-                {text: 'Left', selected: 0 },
-                {text: 'Right', selected: 0 },]
+                {text: 'Left'},
+                {text: 'Right'},]
         }]
 }, {
     id: 2,
@@ -25,17 +25,17 @@ var surveys = [{
         {
             id: 5,
             text: 'What is 1+1?',
-            choices: [
-                {text: '2', selected: 0 },
-                {text: '5', selected: 0 },
-                {text: '-10', selected: 0 }]
+            question: [
+                {text: '2'},
+                {text: '5'},
+                {text: '-10'}]
         }, {
             id: 6,
             text: 'What is 50/50?',
-            choices: [
-                {text: '0', selected: 0 },
-                {text: '1', selected: 0 },
-                {text: '50', selected: 0 }]
+            question: [
+                {text: '0'},
+                {text: '1'},
+                {text: '50'}]
         }]
 }]
 
