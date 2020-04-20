@@ -14,23 +14,22 @@ const state = {
 
 
 const actions = {
-  // asynchronous operations
-  //mocks fetch surveys from api
+
+  //gets all surveys from api
   loadSurveys(context) {
     return fetchSurveys()
       .then((response) => context.commit('setSurveys', { surveys: response }))
   },
+  
   //loads single survey
   loadSurvey(context, { id }) {
     return fetchSurvey(id)
       .then((response) => context.commit('setSurvey', { survey: response }))
   },
-  addSurveyResponse(context) {
-    return saveSurveyResponse(context.state.currentSurvey)
-  },
+
+  //adds current survey
   submitNewSurvey(context, survey) {
     return postNewSurvey(survey)
-
   }
 }
 
@@ -39,6 +38,8 @@ const mutations = {
   setSurveys(state, payload) {
     state.surveys = payload.surveys
   },
+
+  //sets a single survey!
   setSurvey(state, payload) {
     const nQuestions = payload.survey.questions.length
     for (let i = 0; i < nQuestions; i++) {

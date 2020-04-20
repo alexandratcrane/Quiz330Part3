@@ -24,11 +24,17 @@
 
 
          <v-card>
-             HERE
+             <h5> View recent quizzes </h5>
              <div v-for="survey in surveys" v-bind:key="survey.id">
-          <v-title>{{ survey.name}}</v-title>
 
-    <router-link :to="`surveys/${survey.id}`" class="card-footer-item">Take Survey</router-link>
+
+                 <router-link :to="`surveys/${survey.id}`" class="card-footer-item">
+                 <v-btn>
+         {{ survey.name}}
+                 </v-btn>
+
+                 </router-link>
+
              </div>
          </v-card>
    
@@ -48,6 +54,7 @@ export default {
   beforeMount(){
       
       this.$store.dispatch('loadSurveys')
+      
   }
     
 }

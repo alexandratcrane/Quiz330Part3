@@ -1,57 +1,41 @@
 <template>
 <v-app>
-<div id = 'Survey'>
+
   <Nav/>
+<div
+v-for="(x,idx) in surveys" :key="idx">
 
+<div  class="quizzys" v-if="x.id == id">
 
+  <div v-for="(question, idx) in x.questions" :key="idx">
+  <v-card>
+    <v-card-title v-text="question.question"> </v-card-title>
 
-{{survey}}
+      <v-radio-group>
+                        <div  v-for="(n, idx) in question.choices"
+                            :key="n">
+                            {{idx}}
+                        <v-radio 
+                        class="idx"
+                            :label="`${n}`" >
+                        </v-radio>
+                        </div>
+                    </v-radio-group>
 
-          <div class="columns">
-          <div class="column is-10 is-offset-1">
+  </v-card>
+  </div>
+  </div>
 
-            <!-- <div
-              v-for="(question, idx) in survey.questions" 
-              v-bind:key="question.id"
-              v-show="currentQuestion === idx"> 
-
-                
-                    <h4 class='title has-text-centered'>{{ question.text }}</h4>
-              
-                  <div class="column is-offset-4 is-4">
-                    <div class="control">
-                     
-                   
-                      <div v-for="choice in question.choices" v-bind:key="choice.id">
-                        <label class="radio">
-                        <input type="radio" v-model="selectedChoice" :value="choice.id">
-                        {{ choice.text }}
-                        </label>
-                      </div>
-
-
-                    </div>
-
-
-                  </div>
-
-            </div> -->
+</div>
 
       
-
-              <v-btn v-if="surveyComplete" class='button is-focused is-primary is-large'
-                @click.stop="handleSubmit">
-                Submit
-         </v-btn>
-          </div>
-        </div>
-                    <h2 class="title">{{ survey.name }}</h2>
-     
-</div>
+      <router-link class="routerLink" to="/"><v-btn class='btn'>Home</v-btn></router-link> 
+            
 </v-app>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import {fetchSurvey} from '@/api'
 import Nav from '@/components/Nav.vue'
 export default {
@@ -61,78 +45,41 @@ export default {
 },
   data() {
     return {
-       currentQuestion: 0 ,
-       
-       // new data prop
+       survey: [],
+       id: this.$route.params.id
     }
   },
-  beforeMount() {
-    this.$store.dispatch('loadSurvey', { id: parseInt(this.$route.params.id) })
-    
-    
-    console.log(this.$route.params.id)
+  computed: mapState({
+    surveys: state => state.surveys
+  }),
 
-    
-     fetchSurvey(parseInt(this.$route.params.id))
+  beforeMount() {
+  this.$store.dispatch('loadSurveys')
+     console.log(this.$route.params.id)
+  fetchSurvey(parseInt(this.$route.params.id))
       .then((response) => {
         this.survey = response
       })
+  
+  
+
   },
     methods: { // new Vue obj member
-    goToNextQuestion() {
-      if (this.currentQuestion === this.survey.questions.length - 1) {
-        this.currentQuestion = 0
-      } else {
-        this.currentQuestion++
-      }
-    },
-    goToPreviousQuestion() {
-      if (this.currentQuestion === 0) {
-        this.currentQuestion = this.survey.questions.lenth - 1
-      } else {
-        this.currentQuestion--
-      }
-    },
      handleSubmit() {
-      this.$store.dispatch('addSurveyResponse')
-        .then(() => this.$router.push('/'))
+     //see if answers are correct here on submit, then show correct answers for questions like in default quiz
     }
   },
-  computed: {  // new Vue obj member
-    surveyComplete() {
-      if (this.survey.questions) {
-        const numQuestions = this.survey.questions.length
-        const numCompleted = this.survey.questions.filter(q => q.choice).length
-        return numQuestions === numCompleted
-      }
-      return false
-    },
-    survey() {
-      return this.$store.state.currentSurvey
-    },
 
-    //The answer to this is to use a slightly more advanced version 
-    //of a computed property that contains a defined pair of get and set methods within it.
-    // This provides v-model a mechanism for utilizing 2-way data binding between the UI and 
-    //the component's Vue object. In this way the computed property is explicitly in control of
-    // the interactions with the store's data.
-
-    //selectedChoice is actually an object property instead of a function like the others. 
-    selectedChoice: {
-      get() {
-        const question = this.survey.questions[this.currentQuestion]
-        return question.choice
-      },
-      //The set(value) portion receives the new value that is fed from v-model's 2-way data binding and commits a store mutation called setChoice
-      set(value) {
-        const question = this.survey.questions[this.currentQuestion]
-        this.$store.commit('setChoice', { questionId: question.id, choice: value })
-      }
-    }
-  }
 }
+
 </script>
 
 <style>
+.quizzys{
+  margin-top: -50%;
+}
 
+.btn{
+  margin-top: -50%;
+}
 </style>
