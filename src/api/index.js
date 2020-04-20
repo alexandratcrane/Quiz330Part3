@@ -8,15 +8,15 @@ var surveys = [{
             id: 1,
             question: 'What is the worlds most profitable company (Net Profits)?',
             choices: [
-                {text: 'Google'},
-                {text: 'Apple'},
-                {text: 'Microsoft'}]
+                'Google',
+                'Apple',
+                'Microsoft']
         }, {
             id: 2,
             question: 'What foot did Neil Armstrong first set on the moon? ',
             choices: [
-                {text: 'Left'},
-                {text: 'Right'},]
+                'Left',
+                'Right',]
         }]
 }, {
     id: 2,
@@ -24,18 +24,18 @@ var surveys = [{
     questions: [
         {
             id: 5,
-            text: 'What is 1+1?',
-            question: [
-                {text: '2'},
-                {text: '5'},
-                {text: '-10'}]
+            question: 'What is 1+1?',
+            choices: [
+                '2',
+                '5',
+                '-10']
         }, {
             id: 6,
-            text: 'What is 50/50?',
-            question: [
-                {text: '0'},
-                {text: '1'},
-                {text: '50'}]
+            question: 'What is 50/50?',
+            choices: [
+                '0',
+                '1',
+                '50']
         }]
 }]
 

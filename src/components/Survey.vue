@@ -3,9 +3,6 @@
 
   <Nav/>
 <div
-
-
-
 v-for="(x,idx) in surveys" :key="idx">
 
 <div  class="quizzys" v-if="x.id == id">
@@ -14,30 +11,35 @@ v-for="(x,idx) in surveys" :key="idx">
   <v-card>
     <v-card-title v-text="question.question"> </v-card-title>
 
-      <v-radio-group>
+     
+   
 
+      
+   
+         <v-radio-group>
                         <div  v-for="(n, idx) in question.choices"
                             :key="n">
                             {{idx}}
                         <v-radio 
                         class="idx"
-                            :label="`${n.text}`" >
+                            :label="`${n}`" >
                         </v-radio>
+                        
                         </div>
                     </v-radio-group>
 
+
+
   </v-card>
   </div>
-
-  <v-btn class="btn">
-    Submit and view results! (no functionality yet)
-  </v-btn>
   </div>
 
 </div>
 
       
-      <router-link class="routerLink" to="/"><v-btn class='btn'>Home</v-btn></router-link> 
+      <router-link class="routerLink" to="/">  <v-btn class='btn'>
+       Home
+                 </v-btn></router-link> 
             
 </v-app>
 </template>
@@ -53,8 +55,8 @@ export default {
 },
   data() {
     return {
-       id: this.$route.params.id,
-       
+       survey: [],
+       id: this.$route.params.id
     }
   },
   computed: mapState({
@@ -63,7 +65,7 @@ export default {
 
   beforeMount() {
   this.$store.dispatch('loadSurveys')
-  console.log('ROUTE  ' + this.$route.params.id)
+     console.log(this.$route.params.id)
   
   
   
@@ -85,6 +87,6 @@ export default {
 }
 
 .btn{
-  margin-bottom: 10%;
+  margin-top: -50%;
 }
 </style>
