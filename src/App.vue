@@ -1,8 +1,5 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link id="auth" v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Logout</router-link>
-    </div>
     <router-view @authenticated="setAuthenticated" />
   </div>
 </template>
@@ -39,7 +36,6 @@
   body {
     background-color: lightskyblue;
   }
-
   h1 {
     margin: 75px;
   }
@@ -54,14 +50,13 @@
   }
   #nav {
     padding: 30px;
-
-    a {
-      font-weight: bold;
-      color: #2c3e50;
-      &.router-link-exact-active {
-        color: #42b983;
-      }
-    }
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+  &.router-link-exact-active {
+     color: #42b983;
+   }
+  }
   }
   img {
     width: 300px;

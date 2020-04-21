@@ -2,7 +2,8 @@
     <div>
         <div>
             <a href="/" ><img src="@/assets/1838801.svg"> </a>
-            <h1>Login with your school credentials!</h1>
+            <h1 id="welcome">Welcome to QuizShroom!</h1>
+            <h1 id="help">Login with your school credentials!</h1>
             <h4>Hint: It is "username" and then "password"</h4>
         </div>
         <div id="login">
@@ -54,7 +55,13 @@
         background-color: #FFFFFF;
         font-weight: bold;
         color: #2c3e50;
-        margin: 25px auto auto;
-        padding: 20px;
+        margin: 20px auto auto;
+        padding: 15px;
+    }
+    #welcome {
+        color: orangered;
+    }
+    #help {
+        color: purple;
     }
 </style>

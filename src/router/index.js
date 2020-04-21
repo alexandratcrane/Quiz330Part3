@@ -7,7 +7,7 @@ import Survey from '@/components/Survey.vue'
 
 Vue.use(VueRouter)
 
-  const routes = [
+const routes = [
   {
     path: '/',
     name: 'Home',
@@ -17,17 +17,22 @@ Vue.use(VueRouter)
     path: '/create-quiz',
     name: 'Create',
     component: () => import('../views/Create.vue')
-    } ,
-    {
-      path: '/default-quiz',
-      name: 'Default',
-      component: () => import('../views/Default.vue')
-    },
-    {
-      path: '/surveys/:id',
-      component: Survey
-    },
-  
+  } ,
+  {
+    path: '/default-quiz',
+    name: 'Default',
+    component: () => import('../views/Default.vue')
+  },
+  {
+    path: '/surveys/:id',
+    component: Survey
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue')
+  }
+
 ]
 
 const router = new VueRouter({
