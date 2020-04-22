@@ -24,7 +24,7 @@ methods: {
 
 <style scoped>
 .question{ 
-  margin-top: -50%;
+  margin-top: 10%;
   } 
 
 

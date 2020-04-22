@@ -1,14 +1,14 @@
   <template>
   <v-app>
       <Nav/>
-  <div >
+  <div style = "margin:0px; background-color:red;">
       <div class = "create">
         <div v-if="this.review== false">
-         <div>
+      <!--   <div>
                     <h1>{{name}}</h1>
-        </div>
+        </div> -->
       
-          <v-card class = "v-card">
+          <v-card class = "nameQuiz">
             <h2> Name your Quiz </h2>
              <v-text-field  outlined v-model="name" id = "name" placeholder="Survey Name" class="mx-auto" ></v-text-field>
           </v-card>
@@ -108,7 +108,11 @@ data(){
 
 <style scoped>
 .create{
-  margin: -50%;
+  position:absolute;
+  background-color:darkkhaki;
+  top: 100px;
+  left:20%;
+  right: 20%;
 }
 .v-card{
    margin-left: auto;
@@ -126,6 +130,12 @@ data(){
      text-decoration: none;
      margin: 25px;
      
+}
+
+.nameQuiz{
+  position: relative;
+ 
+
 }
 
 </style>

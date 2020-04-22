@@ -2,11 +2,18 @@
     <v-app>
         <div>
 
+
             <v-app-bar
                     absolute
                     color="#5E35B1"
                     dark
-                    elevate-on-scroll
+                    elevate-on-scroll=======
+    <v-app-bar
+      absolute
+      color="#cf2d2d" 
+      dark
+       elevate-on-scroll
+
 
 
             >
@@ -19,7 +26,6 @@
                 <router-link class="routerLink" to="/Login">Logout</router-link>
                 <router-link class="routerLink" to="/"> Home</router-link>
 
-                <router-link class="routerLink" to="/create-quiz">Create new quiz</router-link>
 
                 <router-link  class="routerLink" to="/default-quiz">Use quiz template</router-link>
                 <router-link  class="routerLink" to="/surveys">survey</router-link>
@@ -39,6 +45,7 @@
     }
 </script>
 <style scoped>
+
     .routerLink{
         text-decoration: none;
         margin: 15px;
@@ -54,5 +61,22 @@
         margin-right: 15px;
 
     }
+
+.routerLink{
+     text-decoration: none;
+     margin: 25px;
+    
+      font-size: small;
+     
+}
+
+img{
+    width: auto;
+    height: 25px;
+    margin: 0%;
+    margin-right: 15px;
+ 
+}
+
 
 </style>

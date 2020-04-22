@@ -24,13 +24,14 @@
       </router-link>
 
 
-         <v-card>
-             <h5> View recent quizzes </h5>
+         <v-card class = "recent">
+      
+             <h5 class = "recentTitle"> View recent quizzes </h5>
              <div v-for="survey in surveys" v-bind:key="survey.id">
 
 
                  <router-link :to="`surveys/${survey.id}`" class="card-footer-item">
-                 <v-btn>
+                 <v-btn class="recentbtn" color="#cf2d2d">
          {{ survey.name}}
                  </v-btn>
 
@@ -67,11 +68,37 @@ export default {
      margin: 25px;
      
 }
+
+.recent{
+    position: relative;
+    bottom: 0px;
+    margin-top: 20px;
+    
+    
+    
+}
+.recentbtn{
+    position: relative;
+   margin: 20px;
+    padding:20px;
+    color: white;
+
+}
+
+.recentTitle{
+    font-style: italic;
+    font-size: 20px;
+}
 v-btn{
      text-decoration: none;
     
 }
 img{
     margin-bottom: 125px;
+}
+
+card-footer-item{
+   background-color: darkgreen;
+
 }
 </style>
