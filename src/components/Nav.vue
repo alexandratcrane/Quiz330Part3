@@ -4,7 +4,7 @@
 
     <v-app-bar
       absolute
-      color="#5E35B1" 
+      color="#cf2d2d" 
       dark
        elevate-on-scroll
 
@@ -22,7 +22,7 @@
       <router-link class="routerLink" to="/create-quiz">Create new quiz</router-link>
 
       <router-link  class="routerLink" to="/default-quiz">Use quiz template</router-link>
-       <router-link  class="routerLink" to="/surveys">survey</router-link>
+       <router-link  class="routerLink" to="/surveys">Survey</router-link>
 
       
    
@@ -42,8 +42,8 @@ export default {
 .routerLink{
      text-decoration: none;
      margin: 25px;
-    padding: 25px;
-      font-size: large;
+    
+      font-size: small;
      
 }
 
