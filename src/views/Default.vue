@@ -1,7 +1,9 @@
 <template>
   <div class="default">
   <Nav/>
+  <div class = "quiz">
     <Question class="question"/>
+  </div>
   </div>
 </template>
 
@@ -23,9 +25,17 @@ methods: {
 </script>
 
 <style scoped>
-.question{ 
-  margin-top: 10%;
-  } 
+
+
+.quiz{
+  position: absolute;
+  width:800px;
+  top: 50px;
+  left: 20%;
+  right: 20%;
+  
+
+}
 
 
 </style>
