@@ -4,7 +4,7 @@
         
        <h1> Welcome to the quiz app! </h1>
         <router-link class="routerLink" to="/Home">
-         <a href="/" ><img src="@/assets/mushy.png"> </a>
+         <img src="@/assets/mushy.png">
         </router-link>
     
       <router-link class="routerLink" to="/create-quiz">
