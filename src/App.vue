@@ -1,47 +1,72 @@
 <template>
   <div id="app">
-      
-     
-
-
-    
-    <router-view/>
+    <router-view @authenticated="setAuthenticated" />
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+  export default {
+    name: 'App',
+    data() {
+      return {
+        authenticated: false,
+        mockAccount: {
+          username: "username",
+          password: "password"
+        }
+      }
+    },
+    mounted() {
+      if(!this.authenticated) {
+        this.$router.replace({ name: "Login" });
+      }
+    },
+    methods: {
+      setAuthenticated(status) {
+        this.authenticated = status;
+      },
+      logout() {
+        this.authenticated = false;
+      }
+    }
+  }
+</script>
 
-#nav {
-  padding: 30px;
-
+<style>
+  body {
+    background-color: lightskyblue;
+  }
+  h1 {
+    margin: 75px;
+  }
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    width: 1024px;
+    margin: auto;
+  }
+  #nav {
+    padding: 30px;
   a {
     font-weight: bold;
     color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+  &.router-link-exact-active {
+     color: #42b983;
+   }
   }
-}
-
-img {
-width: 300px;
-height: auto;
-display: block;
-margin-left: auto;
-margin-right: auto;
-margin-bottom: 75px;
-}
-
-h1{
-  margin: 75px;
-  
-}
+  }
+  img {
+    width: 300px;
+    height: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0px;
+  }
+  #auth {
+    position: relative;
+  }
 </style>
