@@ -3,11 +3,6 @@
         <div>
 
 
-            <v-app-bar
-                    absolute
-                    color="#5E35B1"
-                    dark
-                    elevate-on-scroll=======
     <v-app-bar
       absolute
       color="#cf2d2d" 

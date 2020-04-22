@@ -31,9 +31,7 @@ methods: {
   position: absolute;
   width:800px;
   top: 50px;
-  left: 20%;
-  right: 20%;
-  
+
 
 }
 
