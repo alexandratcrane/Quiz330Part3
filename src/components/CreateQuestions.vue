@@ -3,15 +3,15 @@
     <v-app>
        <div>
         <div class="newQuestion">
-          <div>
-            <v-text-field class="text-field" outlined v-model="question" placeholder="Please enter your question" ></v-text-field>
-             <v-text-field class="text-field" outlined v-model="answer" placeholder="Enter the correct answer" ></v-text-field>
+          <div class = "newQ">
+            <v-text-field class="enterQuestion" outlined v-model="question" placeholder="Please enter your question" ></v-text-field>
+             <v-text-field class="enterQuestion" outlined v-model="answer" placeholder="Enter the correct answer" ></v-text-field>
           </div>
           
             <v-btn class="large" @click="addChoice">Add Option</v-btn>
             <p> One option needs to be the correct answer </p>
             <v-btn class="large" @click="saveQuestion"> Save Question</v-btn>
-            <p> allows you to also add another </p>
+            <p> Allows you to also add a new question </p>
         </div>
 
 
@@ -82,10 +82,14 @@ data(){
     padding: 10px 20px;
     margin-top: 20px;   
 }
-
-.text-field{
-  width: 50%;
+.enterQuestion{
+  
+  position:relative;
+  display: inline;
+  
+  top: 0px;
 }
+
 .v-select{
   margin-top: 25px;
 }
@@ -97,11 +101,16 @@ data(){
 
 /* TODO: Center question and answer input */
 .newQuestion{
-    margin-left: auto;
-    margin-right: auto;
-    width: 600px;
+    position: relative;
+    margin:auto;
+    width: 420px;
     height: auto;
-    padding: 10px 20px;
-    margin-top: 20px;  
+    top: 20px;
+}
+
+.newQ{
+position: relative;
+margin: 5px;
+
 }
 </style>
